@@ -8,15 +8,17 @@ if (process.env.NODE_ENV === 'development') {
 }
 
 const app = express();
-const server = http.createServer(app);
+app.set('port', 5000);
 
 app.use(cors());
 
 app.get("/", (req, res) => {
   axios.get(req.query.url)
-    .then(data => res.send(data.data));
+  .then(data => res.send(data.data));
 });
 
-server.listen(5000, () => {
-  console.log("Listening on port 5000");
+const server = http.createServer(app);
+
+server.listen(5001, () => {
+  console.log("Listening on port 5001");
 });
