@@ -1,4 +1,5 @@
 const express =require('express');
+const http = require('http');
 const cors = require('cors');
 const axios = require('axios');
 
@@ -7,6 +8,8 @@ if (process.env.NODE_ENV === 'development') {
 }
 
 const app = express();
+const server = http.createServer(app);
+
 app.use(cors());
 
 app.get("/", (req, res) => {
@@ -14,6 +17,6 @@ app.get("/", (req, res) => {
     .then(data => res.send(data.data));
 });
 
-app.listen(5000, () => {
+server.listen(5000, () => {
   console.log("Listening on port 5000");
 });
