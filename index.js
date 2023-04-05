@@ -10,11 +10,10 @@ const app = express();
 app.use(cors());
 
 app.get("/", (req, res) => {
-  console.log(req.query);
   axios.get(req.query.url)
     .then(data => res.send(data.data));
 });
 
-app.listen(3000, () => {
-  console.log("Listening on port 3000");
+app.listen(5000, () => {
+  console.log("Listening on port 5000");
 });
