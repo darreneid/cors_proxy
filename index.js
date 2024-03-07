@@ -11,7 +11,7 @@ app.use(cors());
 
 app.get("/", (req, res) => {
   if (req.query.url) {
-    axios.get(req.query.url)
+    axios.get(decodeURIComponent(req.query.url))
     .then(data => res.send(data.data));
   } else {
     res.send('Hello world');
